@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { RootState } from '../../app/store';
 import Container from '../../components/container/Container';
-import productsSlice, { ProductObj } from '../../slices/productsSlice';
+import { ProductObj } from '../../slices/productsSlice';
 import ImageModal from './components/ImageModal';
 import ProductDisclosure from './components/ProductDisclosure';
 import ProductGallery from './components/ProductGallery';
@@ -12,7 +12,9 @@ const ProductTable = () => {
 
   const data = useSelector((state: RootState) => state.data);
 
-  const product = data.productsInfo.products.find((value) => value.id.toString() === id) as ProductObj;
+  const product = data.productsInfo.products.find(
+    (value) => value.id.toString() === id
+  ) as ProductObj;
 
   return (
     <>

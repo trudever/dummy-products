@@ -1,5 +1,5 @@
 import getAxios from './wrappedAxios';
-import { setProducts, setCategories, switchIsLoading } from '../slices/productsSlice';
+import { setProducts, switchIsLoading } from '../slices/productsSlice';
 
 const axios = getAxios();
 

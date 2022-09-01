@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import LoadingOverlay from 'react-loading-overlay-ts'
-import styled from 'styled-components'
+import LoadingOverlay from 'react-loading-overlay-ts';
+import styled from 'styled-components';
 import { AppDispatch, RootState } from '../../../app/store';
-import { getProducts } from '../../../helper/getData';
-import { getInitialProducts, changePage } from '../../../slices/productsSlice';
+import { getInitialProducts } from '../../../slices/productsSlice';
 import TableRow from './TableRow';
 import Pagination from './Pagination';
 
@@ -19,8 +18,8 @@ const Table = () => {
 
   useEffect(() => {
     dispatch(getInitialProducts(data.page));
-    return () => {}
-  }, [])
+    return () => {};
+  }, []);
 
   return (
     <>
@@ -28,7 +27,7 @@ const Table = () => {
         active={data.isLoading}
         spinner
         styles={{
-          wrapper: { position: 'static' }
+          wrapper: { position: 'static' },
         }}
       >
         <table className='text-white w-full'>
@@ -48,13 +47,11 @@ const Table = () => {
             </tr>
           </thead>
           <tbody>
-            {
-              data.productsInfo.products.map((product) =>
-                <tr className='hover:bg-[#ffffff1a]' key={product.id}>
-                  <TableRow {...product} />
-                </tr>
-              )
-            }
+            {data.productsInfo.products.map((product) => (
+              <tr className='hover:bg-[#ffffff1a]' key={product.id}>
+                <TableRow {...product} />
+              </tr>
+            ))}
           </tbody>
         </table>
       </LoadingOverlay>
